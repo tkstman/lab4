@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <title>Cat Walk</title>
+ </head>
+ <body>
+   
+
+  
+   <img onmouseover='play()' style="position:absolute;" src="{{ url_for('static', filename='cat.gif')}}" alt='cat'>
+   <script src="{{ url_for('static', filename='catwalk.js')}}">
+   </script>
+  <script>
+var img = document.getElementsByTagName('img')[0];
+         var sound = document.createElement('audio');
+         sound.setAttribute('src', "{{ url_for('static', filename='meow.ogg')}}");
+         document.body.appendChild(sound);
+var play = function()
+       {
+         sound.play();
+       }
+//img.onclick = play();
+img.style.left = '0px';
+var walkForwards = true;
+var direction = 0;
+
+
+function catWalk() {
+  var currentLeft = parseInt(img.style.left);
+
+  if (walkForwards && (currentLeft > (window.innerWidth-img.width))) {
+    walkForwards = false;
+  }
+  if (!walkForwards && (currentLeft <= 0)) {
+    walkForwards = true;
+  }
+  
+  if (walkForwards) {
+    img.style.left = (currentLeft + 10) + 'px';
+    if (direction===1)
+    {
+        img.style.webkitTransform="rotateY(0deg)";
+        img.style.MozTransform="rotateY(0deg)";
+        img.style.msTransform="rotateY(0deg)";
+        img.style.transform="rotateY(0deg)";
+        direction=0;
+    }
+  } else {
+    
+    img.style.left = (currentLeft - 10) + 'px';
+    img.style.webkitTransform="rotateY(180deg)";
+    img.style.MozTransform="rotateY(180deg)";
+    img.style.msTransform="rotateY(180deg)";
+    img.style.transform="rotateY(180deg)";
+    direction=1;
+  }
+}
+window.setInterval(catWalk, 50);
+  </script>
+<p><button  id='but' type="button">Click me!</button></p>
+<div id="result"></div>
+<p>Click the button to see the counter increase.</p>
+<p>Close the browser tab (or window), and try again, and the counter will continue to count (is not reset).</p>
+ </body>
+</html>

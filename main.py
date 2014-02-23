@@ -9,15 +9,20 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def hello():
+def menu(name=None):
     """Return a friendly HTTP greeting."""
-    return 'Hello tks! Whats good? '
+    return render_template('menu.html',name=name)
   
   
-@app.route('/me')
-def tks(name=None):
+@app.route('/catwalk')
+def catwalk(name=None):
     """Return a friendly HTTP greeting."""
-    return render_template('me.html',name=name)
+    return render_template('catwalk.html',name=name)
+  
+@app.route('/madlibs')
+def madlibs(name=None):
+    """Return a friendly HTTP greeting."""
+    return render_template('madlibs.html',name=name)
   
 @app.route('/calculator')
 def calc(name=None):
