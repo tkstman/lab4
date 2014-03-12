@@ -1,3 +1,48 @@
+        var assig;        
+        var assign = function(v)
+        {
+            assig= v;
+        }
+
+        var clickCounter = function()
+        {  
+           alert('hello');
+           var test = document.getElementsByTagName('img')[0];//.style.left;
+           alert(test);
+           if(typeof(Storage)!=="undefined")
+           {
+              if (localStorage.clickcount)
+              {
+                  localStorage.location = 'its right here';
+                  localStorage.thisbal = assig;
+                  alert(localStorage.location);
+                  alert('hey tks');
+                  localStorage.clickcount=Number(localStorage.clickcount)+1;
+                  localStorage.myval=Number(localStorage.myval)+1;
+                  alert('local storage');
+              }
+              else
+              {
+                  localStorage.clickcount=1;
+                localStorage.myval="8";
+              }
+               document.getElementById("result").innerHTML="You have clicked the button " + localStorage.clickcount + " time(s).";
+            }
+            else
+            {
+                document.getElementById("result").innerHTML="Sorry, your browser does not support web storage...";
+            }
+        };
+
+
+
+
+
+
+
+
+
+
 // clickCounter();
 window.onload = function()
 {
@@ -12,31 +57,14 @@ window.onload = function()
 img.onclick = play();
 
 */
-      var clickCounter = function()
-{
-         alert('hi');
-        var test = document.getElementById('img').style.left;
-        alert(test);
-if(typeof(Storage)!=="undefined")
-  {
-  if (localStorage.clickcount)
-    {
-    localStorage.clickcount=Number(localStorage.clickcount)+1;
-    }
-  else
-    {
-    localStorage.clickcount=1;
-    }
-  document.getElementById("result").innerHTML="You have clicked the button " + localStorage.clickcount + " time(s).";
-  }
-else
-  {
-  document.getElementById("result").innerHTML="Sorry, your browser does not support web storage...";
-  }
-};
+
   
-    var butt = document.getElementById('but'); 
-    butt.addEventListener('click',clickCounter(), false);
+        var butt = document.getElementById('but'); 
+        butt.addEventListener('click',clickCounter, false);
+        
+        
 };  
+
+
 
 

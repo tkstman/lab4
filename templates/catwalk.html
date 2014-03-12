@@ -3,26 +3,38 @@
  <head>
   <meta charset="utf-8" />
   <title>Cat Walk</title>
+   <script src="{{ url_for('static', filename='catwalk.js')}}">
+   </script>
  </head>
  <body>
+
    
 
   
-   <img onmouseover='play()' style="position:absolute;" src="{{ url_for('static', filename='cat.gif')}}" alt='cat'>
-   <script src="{{ url_for('static', filename='catwalk.js')}}">
-   </script>
+   <img style="position:absolute;" src="{{ url_for('static', filename='cat.gif')}}" alt='cat'/>
+   
   <script>
-var img = document.getElementsByTagName('img')[0];
-         var sound = document.createElement('audio');
-         sound.setAttribute('src', "{{ url_for('static', filename='meow.ogg')}}");
+       var posit;
+    
+    var sound = document.createElement('audio');
+         sound.setAttribute('src', 'static/meow.ogg');
          document.body.appendChild(sound);
-var play = function()
+    
+    var play = function()
        {
          sound.play();
+         alert(img.style.left);
+         assign(img.style.left);
+         alert('meow');
        }
+    
+        var img = document.getElementsByTagName('img')[0];
+        img.addEventListener('mouseover',play,false);
+        img.style.left = '150px';
+        alert('here we are');
+         
 //img.onclick = play();
-img.style.left = '0px';
-var walkForwards = true;
+    var walkForwards = true;
 var direction = 0;
 
 
@@ -57,6 +69,7 @@ function catWalk() {
   }
 }
 window.setInterval(catWalk, 50);
+
   </script>
 <p><button  id='but' type="button">Click me!</button></p>
 <div id="result"></div>
